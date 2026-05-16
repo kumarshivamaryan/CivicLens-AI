@@ -14,7 +14,7 @@ const Login = () => {
         e.preventDefault();
         try {
             // 1. Backend ko request bhejo
-            const res = await axios.post('${import.meta.env.VITE_API_URL}/api/auth/login', { email, password });
+            const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/login`, { email, password });
 
             // 2. Token aur User ko LocalStorage mein save karo
             localStorage.setItem('token', res.data.token);
