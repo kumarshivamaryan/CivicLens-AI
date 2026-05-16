@@ -9,7 +9,7 @@ const AdminPanel = () => {
 
   const fetchReports = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/reports');
+      const res = await axios.get('${import.meta.env.VITE_API_URL}/api/reports');
       setReports(res.data);
       setLoading(false);
     } catch (err) {
@@ -22,7 +22,7 @@ const AdminPanel = () => {
   const updateStatus = async (id, newStatus) => {
     try {
         const token = localStorage.getItem('token');
-      await axios.patch(`http://localhost:5000/api/reports/${id}/status`, { status: newStatus }, 
+      await axios.patch(`${import.meta.env.VITE_API_URL}/api/reports/${id}/status`, { status: newStatus }, 
         {
         headers: {
          
@@ -39,7 +39,7 @@ const AdminPanel = () => {
   const deleteReport = async (id) => {
   if (window.confirm("Are you sure?")) {
     try {
-      await axios.delete(`http://localhost:5000/api/reports/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/reports/${id}`);
       // State update karo taaki UI se report gayab ho jaye
       setReports(reports.filter(report => report._id !== id));
       alert("Report Deleted!");

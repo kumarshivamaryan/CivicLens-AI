@@ -22,7 +22,7 @@ const Dashboard = () => {
 
     try {
 
-      const res = await axios.get(`http://localhost:5000/api/reports/user/${user.id}`);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/reports/user/${user.id}`);
         
       setMyReports(res.data);
     } catch (err) {
