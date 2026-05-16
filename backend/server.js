@@ -91,6 +91,11 @@ app.get('/', (req, res) => {
   res.send("CIVIC AI Server is Running!");
 });
 
+app.use(cors({
+  origin: 'https://civic-lens-ai-murex.vercel.app',
+  credentials: true
+}));
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   
