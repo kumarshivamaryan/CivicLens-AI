@@ -88,7 +88,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Test Route
 app.get('/', (req, res) => {
-  res.send("NagarSudhaar AI Server is Running!");
+  res.send("CIVIC AI Server is Running!");
 });
 
 const PORT = process.env.PORT || 5000;
