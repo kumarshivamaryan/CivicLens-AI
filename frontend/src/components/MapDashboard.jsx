@@ -18,7 +18,7 @@ function SetViewOnClick({ reports }) {
   const map = useMap();
   useEffect(() => {
     const pendingReports = reports.filter(r => 
-      r.status === 'Pending' && r.location?.coordinates?.length === 2
+      r.status !== 'Resolved' && r.location?.coordinates?.length === 2
     );
     if (pendingReports.length > 0) {
       const bounds = pendingReports.map(r => [
@@ -50,7 +50,7 @@ const MapDashboard = ({ reports }) => {
         <SetViewOnClick reports={reports} />
 
         {reports.map((report) => {
-          const isPending = report.status === 'Pending';
+          const isPending = report.status !== 'Resolved';
           const coords = report.location?.coordinates;
 
           if (isPending && coords?.length === 2) {
